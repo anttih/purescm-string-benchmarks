@@ -1,0 +1,24 @@
+package:
+  name: benchmarks
+  dependencies:
+    - strings
+    - console
+  test:
+    main: Test.Main
+    dependencies:
+      - assert
+      - console
+      - strings
+      - minibench
+      - unfoldable
+      - lists
+workspace:
+  backend:
+    cmd: purescm
+    args:
+      - "build"
+  package_set:
+    url: https://raw.githubusercontent.com/purescm/purescm/b31fdf58ee0f718af569b0c4f87c9d91648d9b4c/package-sets/1.0.0.json
+  extra_packages:
+    strings:
+      path: ../core/strings

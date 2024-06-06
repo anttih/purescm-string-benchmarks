@@ -1,0 +1,24 @@
+module Test.Main where
+
+import Prelude
+
+import Data.Foldable (for_)
+import Data.List (List, fold, (:))
+import Data.Unfoldable (range, replicate)
+import Effect (Effect)
+import Effect.Class.Console (log)
+import Performance.Minibench (benchWith)
+
+linear :: forall a. (Int -> a) -> Effect Unit
+linear f = do
+  let ns = 1 : ((_ * 100) <$> range 1 10)
+  for_ ns \n -> do
+    log $ show n <> ":"
+    benchWith 50 \_ -> f n
+    log ""
+
+main :: Effect Unit
+main = do
+  linear \n -> do
+    let parts = replicate n "PureScript" :: List String
+    fold parts
