@@ -19,6 +19,7 @@ linear f = do
 
 main :: Effect Unit
 main = do
+  log "-------------------- fold --------------------"
   linear \n -> do
     let parts = replicate n "PureScript" :: List String
     fold parts
