@@ -4,6 +4,7 @@ import Prelude
 
 import Data.Foldable (for_)
 import Data.List (List, fold, (:))
+import Data.String.CodeUnits (slice)
 import Data.Unfoldable (range, replicate)
 import Effect (Effect)
 import Effect.Class.Console (log)
@@ -23,3 +24,8 @@ main = do
   linear \n -> do
     let parts = replicate n "PureScript" :: List String
     fold parts
+
+  log "-------------------- fold + slice --------------------"
+  linear \n -> do
+    let parts = replicate n "PureScript" :: List String
+    slice (n * 10 / 4) (n * 10 / 4 * 3) $ fold parts
