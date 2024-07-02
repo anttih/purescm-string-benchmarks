@@ -1,0 +1,16 @@
+package:
+  name: js-string-benchmarks
+  dependencies:
+    - purescm-string-benchmarks
+    - console
+    - strings
+    - assert
+    - minibench
+    - unfoldable
+    - lists
+workspace:
+  packageSet:
+    registry: 53.2.0
+  extraPackages:
+    purescm-string-benchmarks:
+      path: ../

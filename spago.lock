@@ -1,17 +1,15 @@
 workspace:
   packages:
-    benchmarks:
+    purescm-string-benchmarks:
       path: ./
       dependencies:
-        - console
-        - strings
-      test_dependencies:
         - assert
         - console
         - lists
         - minibench
         - strings
         - unfoldable
+      test_dependencies: []
       build_plan:
         - arrays
         - assert

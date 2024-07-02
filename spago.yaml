@@ -1,17 +1,12 @@
 package:
-  name: benchmarks
+  name: purescm-string-benchmarks
   dependencies:
-    - strings
     - console
-  test:
-    main: Test.Main
-    dependencies:
-      - assert
-      - console
-      - strings
-      - minibench
-      - unfoldable
-      - lists
+    - strings
+    - assert
+    - minibench
+    - unfoldable
+    - lists
 workspace:
   backend:
     cmd: purescm
