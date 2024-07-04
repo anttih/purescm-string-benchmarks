@@ -52,7 +52,7 @@ workspace:
         - unsafe-coerce
   package_set:
     address:
-      url: https://raw.githubusercontent.com/purescm/purescm/b31fdf58ee0f718af569b0c4f87c9d91648d9b4c/package-sets/1.0.0.json
+      url: https://raw.githubusercontent.com/purescm/purescm/05fa1c8b6bc0623e5c00ab9dc1b27b3afa196007/package-sets/1.0.0.json
     compiler: ">=0.15.10 <0.16.0"
     content:
       arrays:
@@ -118,7 +118,9 @@ workspace:
         git: https://github.com/purescm/purescript-core.git
         ref: b55c8bb976dcddf69fda2593c5707969ca1e13b4
         subdir: lazy
-      lists: 7.0.0
+      lists:
+        git: https://github.com/purescm/purescript-lists.git
+        ref: 71502a132567cf7f32c2242d57b1cba2c77ebc15
       maybe: 6.0.0
       minibench:
         git: https://github.com/purescm/purescript-core.git
@@ -160,6 +162,7 @@ workspace:
       strings:
         git: https://github.com/purescm/purescript-core.git
         ref: b55c8bb976dcddf69fda2593c5707969ca1e13b4
+        subdir: strings
       tailrec: 6.1.0
       transformers: 6.0.0
       tuples: 7.0.0
@@ -174,9 +177,7 @@ workspace:
         subdir: unsafe-coerce
         dependencies: []
       validation: 6.0.0
-  extra_packages:
-    strings:
-      path: ../core/strings
+  extra_packages: {}
 packages:
   arrays:
     type: git
@@ -393,9 +394,9 @@ packages:
       - invariant
       - prelude
   lists:
-    type: registry
-    version: 7.0.0
-    integrity: sha256-EKF15qYqucuXP2lT/xPxhqy58f0FFT6KHdIB/yBOayI=
+    type: git
+    url: https://github.com/purescm/purescript-lists.git
+    rev: 71502a132567cf7f32c2242d57b1cba2c77ebc15
     dependencies:
       - bifunctors
       - control
@@ -514,8 +515,10 @@ packages:
       - tailrec
       - unsafe-coerce
   strings:
-    type: local
-    path: ../core/strings
+    type: git
+    url: https://github.com/purescm/purescript-core.git
+    rev: b55c8bb976dcddf69fda2593c5707969ca1e13b4
+    subdir: strings
     dependencies:
       - arrays
       - control

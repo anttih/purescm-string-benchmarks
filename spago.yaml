@@ -12,8 +12,5 @@ workspace:
     cmd: purescm
     args:
       - "build"
-  package_set:
-    url: https://raw.githubusercontent.com/purescm/purescm/b31fdf58ee0f718af569b0c4f87c9d91648d9b4c/package-sets/1.0.0.json
-  extra_packages:
-    strings:
-      path: ../core/strings
+  packageSet:
+    url: https://raw.githubusercontent.com/purescm/purescm/05fa1c8b6bc0623e5c00ab9dc1b27b3afa196007/package-sets/1.0.0.json
