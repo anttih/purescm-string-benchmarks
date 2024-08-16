@@ -26,21 +26,13 @@ import Benchmark.ListInsert as ListInsert
 
 main :: Effect Unit
 main = do
-  linear "(list) fold" \n -> do
-    let parts = replicate n "PureScript" :: List String
-    fold parts
+  let partsL = replicate 1000 "PureScript" :: List String
+  bench "(list) fold" 1000 \_ -> fold partsL
+  bench "(list) fold + slice" 1000 \_ -> slice 1000 1500 $ fold partsL
 
-  linear "(list) fold + slice" \n -> do
-    let parts = replicate n "PureScript" :: List String
-    slice (n * 10 / 4) (n * 10 / 4 * 3) $ fold parts
-
-  linear "(array) fold"  \n -> do
-    let parts = replicate n "PureScript" :: Array String
-    fold parts
-
-  linear "(array) fold + slice" \n -> do
-    let parts = replicate n "PureScript" :: Array String
-    slice (n * 10 / 4) (n * 10 / 4 * 3) $ fold parts
+  let parts' = replicate 1000 "PureScript" :: Array String
+  bench "(array) fold" 1000 \_ -> fold parts'
+  bench "(array) fold + slice" 1000 \_ -> slice 1000 1500 $ fold parts'
 
   bench "regex test" 100 \_ -> Regex.test (Regex.unsafeRegex "foo ([a-z]+) baz" RegexFlags.noFlags) "foo bar baz"
 
@@ -80,13 +72,13 @@ main = do
   -- Record update --
   bench "RecordUpdate    1000" 1000 (\_ -> RecordUpdate.test 1000)
   bench "RecordUpdate   10000" 1000 (\_ -> RecordUpdate.test 10000)
-  bench "RecordUpdate  100000" 100 (\_ -> RecordUpdate.test 100000)
+  bench "RecordUpdate  100000" 1000 (\_ -> RecordUpdate.test 100000)
   bench "RecordUpdate 1000000" 100 (\_ -> RecordUpdate.test 1000000)
 
   -- List insert --
   bench "ListInsert    1000" 1000 (\_ -> ListInsert.test 1000)
   bench "ListInsert   10000" 1000 (\_ -> ListInsert.test 10000)
-  bench "ListInsert  100000" 100 (\_ -> ListInsert.test 100000)
+  bench "ListInsert  100000" 1000 (\_ -> ListInsert.test 100000)
   bench "ListInsert 1000000" 100 (\_ -> ListInsert.test 1000000)
 
 bench
