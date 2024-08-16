@@ -9,6 +9,12 @@ package:
     - unfoldable
     - lists
 workspace:
+  backend:
+    cmd: purs-backend-es
+    args:
+      - "build"
+      - "--output-dir"
+      - "output"
   packageSet:
     registry: 53.2.0
   extraPackages:

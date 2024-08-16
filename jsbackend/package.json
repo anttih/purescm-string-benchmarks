@@ -1,0 +1,17 @@
+{
+  "name": "benchmarks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "files": [],
+  "bin": {
+    "bench": "./index.js"
+  },
+  "scripts": {
+    "build": "spago build && purs-backend-es bundle-module --no-build --output-dir output -m Main --timing --int-tags --platform=node --minify --to=output/index.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.5"
+  }
+}
+
